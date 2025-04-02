@@ -1,0 +1,17 @@
+.basic{
+    text-align: center;
+}
+
+.add{
+    text-align: center;
+}
+
+.ok{
+    text-align: center;
+}
+
+.image{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}

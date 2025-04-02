@@ -1,0 +1,24 @@
+#Loader{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid blueviolet;
+    border-top: 5px solid black;
+    animation: loader 1.5s ease-in-out 0s infinite normal;
+}
+
+@keyframes loader {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
