@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function createNavigationMenu(pages) {
+    // Create <nav> element
+    const nav = document.createElement('nav');
+    nav.style.display = 'flex';
+    nav.style.justifyContent = 'center';
+    nav.style.gap = '20px';
+    nav.style.background = '#1e1e2f';
+    nav.style.padding = '15px';
+    nav.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+  
+    // Create and append links
+    pages.forEach(page => {
+      const link = document.createElement('a');
+      link.textContent = page;
+      link.href = `#${page.toLowerCase().replace(/\s+/g, '-')}`;
+      link.style.color = 'white';
+      link.style.textDecoration = 'none';
+  
+      // Add hover effect
+      link.addEventListener('mouseover', () => link.style.color = 'red');
+      link.addEventListener('mouseout', () => link.style.color = 'white');
+  
+      nav.appendChild(link);
+    });
+  
+    // Append nav to the body
+    document.body.style.margin = '0'; // remove default margin
+    document.body.appendChild(nav);
+  }
+  
+  // Example usage:
+  createNavigationMenu(["Home", "About Us", "Services", "Contact"]);
+  
+    </script>
+</body>
+</html>

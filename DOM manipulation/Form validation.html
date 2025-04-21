@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Validation</title>
+    <style>
+        .form-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+        }      
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }        
+        .sidebox {
+            display: flex;
+            gap: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }        
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }        
+        .error.active {
+            display: block;
+        }        
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }        
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="myForm" onsubmit="return validateForm(event)">
+            <div class="sidebox">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName">
+                    <div class="error" id="firstNameError">Please enter a valid first name only (letters only, 2-50 characters)</div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName">
+                    <div class="error" id="lastNameError">Please enter a valid last name only (letters only, 2-50 characters)</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <div class="error" id="emailError">Ensure that the email is in the correct format (e.g., example@example.com)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="street">Street:</label>
+                <input type="text" id="street" name="street">
+                <div class="error" id="streetError">Please enter a valid street address (letters only, 2-200 characters)</div>
+            </div>
+            
+            <div class="sidebox">
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city">
+                    <div class="error" id="cityError">Please enter a city name (letters only, 2-50 characters)</div>
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state">
+                    <div class="error" id="stateError">Please enter a state name (letters only, 2-50 characters)</div>
+                </div>
+            </div>
+
+            <div class="sidebox">
+                <div class="form-group">
+                    <label for="zipcode">Zipcode:</label>
+                    <input type="number" id="zipCode" name="zipCode">
+                    <div class="error" id="zipCodeError">Please enter a valid zipcode number (letters only, 2-50 characters)</div>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <input type="text" id="country" name="country">
+                    <div class="error" id="countryError">Please enter a valid country name (letters only, 2-50 characters)</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="number" id="phone" name="phone">
+                <div class="error" id="phoneError">Please enter a valid phone number (e.g., 1234567890)</div>
+            </div>
+
+            <button id="submitBtn" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            let isValid = true;
+
+            // First Name Validation
+            const firstName = document.getElementById('firstName').value;
+            const firstNameError = document.getElementById('firstNameError');
+            const firstNameRegex = /^[A-Za-z]{2,50}$/;
+            if (!firstNameRegex.test(firstName)) {
+                firstNameError.classList.add('active');
+                isValid = false;
+            } else {
+                firstNameError.classList.remove('active');
+            }
+
+            // Last Name Validation
+            const lastName = document.getElementById('lastName').value;
+            const lastNameError = document.getElementById('lastNameError');
+            const lastNameRegex = /^[A-Za-z]{2,50}$/;
+            if (!lastNameRegex.test(lastName)) {
+                lastNameError.classList.add('active');
+                isValid = false;
+            } else {
+                lastNameError.classList.remove('active');
+            }
+
+            // Email Validation
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                emailError.classList.add('active');
+                isValid = false;
+            } else {
+                emailError.classList.remove('active');
+            }
+
+            // City Name Validation
+            const cityName = document.getElementById('cityName').value;
+            const cityNameError = document.getElementById('cityNameError');
+            const cityNameRegex = /^[A-Za-z]{2,50}$/;
+            if (!cityNameRegex.test(cityName)) {
+                cityNameError.classList.add('active');
+                isValid = false;
+            } else {
+                cityNameError.classList.remove('active');
+            }
+            
+            // State Name Validation
+            const stateName = document.getElementById('stateName').value;
+            const stateNameError = document.getElementById('stateNameError');
+            const stateNameRegex = /^[A-Za-z]{2,50}$/;
+            if (!stateNameRegex.test(stateName)) {
+                stateNameError.classList.add('active');
+                isValid = false;
+            } else {
+                stateNameError.classList.remove('active');
+            }
+            
+            // Country Name Validation
+            const countryName = document.getElementById('countryName').value;
+            const countryNameError = document.getElementById('countryNameError');
+            const countryNameRegex = /^[A-Za-z]{2,50}$/;
+            if (!countryNameRegex.test(countryName)) {
+                countryNameError.classList.add('active');
+                isValid = false;
+            } else {
+                countryNameError.classList.remove('active');
+            }
+
+            // Phone Validation
+            const phone = document.getElementById('phone').value;
+            const phoneError = document.getElementById('phoneError');
+            const phoneRegex = /^\d{3}\d{3}\d{4}$/;
+            if (!phoneRegex.test(phone)) {
+                phoneError.classList.add('active');
+                isValid = false;
+            } else {
+                phoneError.classList.remove('active');
+            }
+
+            if (isValid) {
+                alert('Form submitted successfully!');
+                document.getElementById('myForm').reset();
+            }
+
+            return isValid;
+        }
+
+        // Real-time validation
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                const errorElement = document.getElementById(this.id + 'Error');
+                let regex;
+
+                switch(this.id) {
+                    case 'firstName':
+                        regex = /^[A-Za-z]{2,50}$/;
+                        break;
+                    case 'lastName':
+                        regex = /^[A-Za-z]{2,50}$/;
+                        break;
+                    case 'email':
+                        regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        break;
+                    case 'street':
+                        regex = /^[A-Za-z0-9\s.,'#-/]{1,100}$/;
+                        break;
+                    case 'city':
+                        regex = /^[A-Za-z]{2,50}$/;
+                        break;
+                    case 'state':
+                        regex = /^[A-Za-z]{2,50}$/;
+                        break;
+                    case 'country':
+                        regex = /^[A-Za-z]{2,50}$/;
+                        break;
+                    case 'zipCode':
+                        regex = /^[A-Za-z0-9\s-]{3,10}$/;;
+                        break;
+                    case 'phone':
+                        regex = /^\d{3}\d{3}\d{4}$/;
+                        break;
+                }
+
+                if (this.value && !regex.test(this.value)) {
+                    errorElement.classList.add('active');
+                } else {
+                    errorElement.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
